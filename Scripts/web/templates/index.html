@@ -78,13 +78,13 @@
         <form id="grade_links" method="get" action="/get_grade">
             {% for doc in content %}
                 <a href={{ doc }}>{{ doc }}</a> <br>
-                {#                0: <input type="radio" id={{ doc }} name={{ doc }} value=0>#}
-                {#                1: <input type="radio" id={{ doc }} name={{ doc }} value=1>#}
-                {#                2: <input type="radio" id={{ doc }} name={{ doc }} value=2><br>#}
+                <input type="radio" id={{ doc }} name={{ doc }} value={{ doc }} "0">0</input>
+                <input type="radio" id={{ doc }} name={{ doc }} value={{ doc }} "0">1</input>
+                <input type="radio" id={{ doc }} name={{ doc }} value={{ doc }} "0">2</input><br>
             {% endfor %}
-            {#            <div>#}
-            {#                <input type="submit" value="submit grades" class="tfbutton">#}
-            {#            </div>#}
+            <div>
+                <input type="submit" value="submit grades" class="tfbutton">
+            </div>
         </form>
     </div>
 </div>

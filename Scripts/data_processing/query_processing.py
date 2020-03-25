@@ -1,5 +1,5 @@
 from Scripts.connection.connection import create_connection
-from data.variables import get_index_name
+from data.variables import get_index_name, number_of_docs_to_retrieve
 
 
 def token_extraction(es, query, index_name):
@@ -46,7 +46,13 @@ def get_relevant_docs(query):
 
     # generate a list of documents from the dictionary.
     list_documents = []
-    result = es.search(index="hw3_dataset", size=100, body={'query': {'match': {'content': ' '.join(tokens)}}})
+
+    # this data is present in /data/variables file.
+    docs_to_retrieve = number_of_docs_to_retrieve()
+
+    # gets list of docs from es object.
+    result = es.search(index="hw3_dataset", size=docs_to_retrieve,
+                       body={'query': {'match': {'content': ' '.join(tokens)}}})
     for item in result["hits"]["hits"]:
         list_documents.append(item["_source"]["url"])
 
